@@ -29,6 +29,7 @@ const companies = [
 function createTable() {
     const table = document.createElement('table');
     table.setAttribute('border', '1');
+    table.setAttribute('cellpadding', '4');
     
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
