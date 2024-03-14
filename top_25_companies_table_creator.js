@@ -1,5 +1,5 @@
 const companies = [
-    { name: "Ontik Technology", services: "Team Augmentation, MVP Partnership, Custom Software Development, Business Automation", sectors: "E-Commerce, Health & Fitness, Manufacturing, Logistics and Transportation, Agriculture, Entertainment, Sports" },
+    { name: "Ontik Technology", services: "<a href="https://www.ontiktechnology.com/team-augmentation">Team Augmentation</a>, <a href="https://www.ontiktechnology.com/mvp-partnership">MVP Partnership</a>, <a href="https://www.ontiktechnology.com/custom-software-development-service">Custom Software Development</a>, <a href="https://www.ontiktechnology.com/integrated-business-automation">Business Automation</a>", sectors: "E-Commerce, Health & Fitness, Manufacturing, Logistics and Transportation, Agriculture, Entertainment, Sports" },
     { name: "Brainstation 23", services: "Enterprise & Customized web applications", sectors: "Financial services, Medical, eCommerce" },
     { name: "Tiger IT", services: "Managed Security", sectors: "Government Agency" },
     { name: "BJIT", services: "Custom Software Development, and Offshore IT Services", sectors: "Information Technology, Business Services, Telecommunications" },
