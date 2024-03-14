@@ -39,7 +39,14 @@ function createTable() {
     headers.forEach(headerText => {
         const header = document.createElement('th');
         header.textContent = headerText;
+        header.style.padding = '10px'; // Set cell padding here
+        header.style.backgroundColor = '#2459d0'; // Set header background color here
+        header.style.color = 'white'; // Set header text color here
         headerRow.appendChild(header);
+        
+        // const header = document.createElement('th');
+        // header.textContent = headerText;
+        // headerRow.appendChild(header);
     });
 
     thead.appendChild(headerRow);
@@ -50,6 +57,7 @@ function createTable() {
         cellData.forEach(text => {
             const cell = document.createElement('td');
             cell.textContent = text;
+            cell.style.padding = '8px'; // Apply cell padding for other cells
             row.appendChild(cell);
         });
         tbody.appendChild(row);
