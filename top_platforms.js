@@ -192,7 +192,7 @@ const cssStyles = `
 
 
   function createTable() {
-    const container = document.getElementById('table-container');
+    const container = document.getElementById('top-platforms-table-container');
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
