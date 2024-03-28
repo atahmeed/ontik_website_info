@@ -26,6 +26,7 @@ const companies = [
     { name: "Vivasoft", services: "Staff Augmentation, End To End Development, MVP, Offshore Development", sectors: "Food, Health and Wellness, Banking" }
 ];
 
+
 function createTable() {
     const table = document.createElement('table');
     table.setAttribute('border', '1');
