@@ -191,8 +191,9 @@ const cssStyles = `
   ];
 
 
-  function createTable() {
-    const container = document.getElementById('top-platforms-table-container');
+ function createTable() {
+  const container = document.getElementById('top-platforms-table-container');
+  if (container !== null) {
     const table = document.createElement('table');
     const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
@@ -229,6 +230,8 @@ const cssStyles = `
     table.appendChild(tbody);
     container.appendChild(table);
   }
+}
 
-  // Call createTable function when the page loads
-  window.onload = createTable;
+// Call createTable function when the page loads
+window.onload = createTable;
+
