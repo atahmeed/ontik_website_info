@@ -1,28 +1,31 @@
-const cssStyles = `
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      padding: 8px;
-      border: 1px solid #dddddd;
-    }
-    thead {
-      background-color: #0062ff;
-      color: #ffffff;
-    }
-    tbody tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  `;
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('top-platforms-table-container');
+    if (container !== null) {
+        // Create table and its components
+        const table = document.createElement('table');
+        table.style.width = '100%';
+        table.style.borderCollapse = 'collapse';
 
-  const styleSheet = document.createElement("style");
-  styleSheet.type = "text/css";
-  styleSheet.innerText = cssStyles;
-  document.head.appendChild(styleSheet);
+        const thead = document.createElement('thead');
+        thead.style.backgroundColor = '#0062ff';
+        thead.style.color = '#ffffff';
 
-  // Data for table rows
-  const platforms = [
+        const tbody = document.createElement('tbody');
+
+        // Define headers
+        const headers = ["Platform Name", "Website", "Description"];
+        const headerRow = document.createElement('tr');
+        headers.forEach(headerText => {
+            const header = document.createElement('th');
+            header.textContent = headerText;
+            header.style.padding = '8px';
+            header.style.border = '1px solid #dddddd';
+            headerRow.appendChild(header);
+        });
+        thead.appendChild(headerRow);
+
+        // Data for table rows
+         const platforms = [
   {
     name: "Crunchbase",
     website: "http://www.crunchbase.com/",
@@ -190,46 +193,34 @@ const cssStyles = `
   }
   ];
 
+        // Populate body of the table
+        platforms.forEach((platform, index) => {
+            const row = document.createElement('tr');
+            if (index % 2 === 1) {
+                row.style.backgroundColor = '#f2f2f2';
+            }
 
- document.addEventListener('DOMContentLoaded', function() {
-  const container = document.getElementById('top-platforms-table-container');
-  if (container !== null) {
-    const table = document.createElement('table');
-    const thead = document.createElement('thead');
-    const tbody = document.createElement('tbody');
+            Object.values(platform).forEach(text => {
+                const cell = document.createElement('td');
+                cell.style.padding = '8px';
+                cell.style.border = '1px solid #dddddd';
 
-    // Header row
-    const headerRow = document.createElement('tr');
-    const headers = ["Platform Name", "Website", "Description"];
-    headers.forEach(headerText => {
-      const header = document.createElement('th');
-      header.textContent = headerText;
-      headerRow.appendChild(header);
-    });
-    thead.appendChild(headerRow);
+                if (text.startsWith('http')) {
+                    const link = document.createElement('a');
+                    link.href = text;
+                    link.textContent = 'Visit';
+                    cell.appendChild(link);
+                } else {
+                    cell.textContent = text;
+                }
+                row.appendChild(cell);
+            });
+            tbody.appendChild(row);
+        });
 
-    // Adding rows from the platforms array
-    platforms.forEach(platform => {
-      const row = document.createElement('tr');
-      Object.values(platform).forEach(text => {
-        const cell = document.createElement('td');
-        if (text.startsWith('http')) {
-          const link = document.createElement('a');
-          link.href = text;
-          link.textContent = text;
-          cell.appendChild(link);
-        } else {
-          cell.textContent = text;
-        }
-        row.appendChild(cell);
-      });
-      tbody.appendChild(row);
-    });
-
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    container.appendChild(table);
-  }
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        container.appendChild(table);
+    }
 });
-
 
