@@ -191,7 +191,7 @@ const cssStyles = `
   ];
 
 
- function createTable() {
+ document.addEventListener('DOMContentLoaded', function() {
   const container = document.getElementById('top-platforms-table-container');
   if (container !== null) {
     const table = document.createElement('table');
@@ -230,8 +230,6 @@ const cssStyles = `
     table.appendChild(tbody);
     container.appendChild(table);
   }
-}
+});
 
-// Call createTable function when the page loads
-window.onload = createTable;
 
