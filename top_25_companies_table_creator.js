@@ -26,9 +26,16 @@ const companies = [
     { name: "Vivasoft", services: "Staff Augmentation, End To End Development, MVP, Offshore Development", sectors: "Food, Health and Wellness, Banking" }
 ];
 
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('top-25-table-container');
+    if (container) { // Check if the container element exists
+        createTable(container); // Pass the container to the function
+    } else {
+        console.log('Container element not found. Table cannot be created.');
+    }
+});
 
-
-function createTable() {
+function createTable(container) {
     const table = document.createElement('table');
     table.setAttribute('border', '1');
     table.setAttribute('cellpadding', '4');
@@ -45,10 +52,6 @@ function createTable() {
         header.style.backgroundColor = '#2459d0'; // Set header background color here
         header.style.color = 'white'; // Set header text color here
         headerRow.appendChild(header);
-        
-        // const header = document.createElement('th');
-        // header.textContent = headerText;
-        // headerRow.appendChild(header);
     });
 
     thead.appendChild(headerRow);
@@ -56,9 +59,13 @@ function createTable() {
     companies.forEach(company => {
         const row = document.createElement('tr');
         const cellData = [company.name, company.services, company.sectors];
-        cellData.forEach(text => {
+        cellData.forEach((text, index) => {
             const cell = document.createElement('td');
-            cell.textContent = text;
+            if (index === 1) { // Check if the cell is for the 'services' column
+                cell.innerHTML = text; // Use innerHTML for the services column to render HTML
+            } else {
+                cell.textContent = text; // Use textContent for other columns
+            }
             cell.style.padding = '8px'; // Apply cell padding for other cells
             row.appendChild(cell);
         });
@@ -68,8 +75,5 @@ function createTable() {
     table.appendChild(thead);
     table.appendChild(tbody);
 
-    document.getElementById('top-25-table-container').appendChild(table);
+    container.appendChild(table);
 }
-
-// Call createTable on window load
-window.onload = createTable;
